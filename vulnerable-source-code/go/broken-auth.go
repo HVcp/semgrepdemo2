@@ -5,7 +5,7 @@ package main
  */
 
 /** Run the code snippet
-* COMMAND: go run 5-BrokenAuth.go
+* COMMAND: go run 5-BrokenAuth.go 
  */
 import (
 	"fmt"

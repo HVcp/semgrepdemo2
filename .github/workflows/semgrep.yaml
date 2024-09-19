@@ -1,40 +1,3 @@
-# Github Action Example with Semgrep SAST
-
-This repository contains an example workflow showcasing the integration of Semgrep, a powerful static analysis tool, within a GitHub Actions workflow for performing Static Application Security Testing (SAST).
-
-## Workflow Overview
-
-The provided GitHub Actions workflow demonstrates how to:
-
-- Run Semgrep scan on your codebase.
-- Save the scan results in SARIF format.
-- Upload the SARIF file as an artifact.
-- Utilize the GitHub `upload-sarif` action to display scan findings in the GitHub Security tab.
-
-## Contents
-
-- `.github/workflows/`: Contains the workflow YAML file.
-- `vulnerable-source-code/`: Placeholder directory representing the codebase for scanning.
-- `README.md`: Instructions and overview.
-
-Feel free to use this as a reference for integrating Semgrep scans into your CI/CD pipelines and enhancing your code security.
-
-## Manual Usage
-
-```bash
-semgrep scan -j 100 --config p/default --config ./custom-semgrep-rules/ src > out.txts
-
-# with sarif format
-semgrep scan -j 100 -q --sarif --config p/default --config ./custom-semgrep-rules/ src > semgrep-result.sarif
-
-semgrep scan -j 100 -q --sarif --config p/default --config ./custom-semgrep-rules/ src > semgrep-result.sarif
-```
-
-> Tips: Using [SARIF Viewer](https://marketplace.visualstudio.com/items?itemName=MS-SarifVSCode.sarif-viewer) in VSCode or [sarif-tools](https://github.com/microsoft/sarif-tools) to beautify the sarif format file
-
-## Github Action File
-
-```yaml
 # Name of this GitHub Actions workflow.
 name: Semgrep
 
@@ -90,5 +53,3 @@ jobs:
         with:
           sarif_file: semgrep-results.sarif
         if: always()
-
-```
